@@ -26,6 +26,7 @@ const Link = styled.a`
 
 const Heading = styled.h1`
     padding: 1em;
+    margin: 0;
 `
 
 const ProductsContainer = styled.div`
@@ -33,23 +34,49 @@ const ProductsContainer = styled.div`
     text-align: center;
 `
 
+const Filter = styled.div`
+    padding: 0.5em;
+    text-align: center;
+    display: inline-block;
+    
+    button {
+        margin: 0.5em 1em;
+        border: 1px solid lightgrey;
+        border-radius: 8px;
+        padding: 0.4em 1em;
+        background-color: #FFF5EE;
+
+        &:hover {
+            background-color: #E9DCC9;
+            cursor: pointer;
+        }
+    }
+`
+
+const FilterBar = styled.div`
+    text-align: center;
+    
+    box-shadow: 0 2px 4px 0 #ECECEC;
+`
+
 export const Products = () => {
     return <Layout>
         <Link href="/">⬅ Back to Home Page</Link>
         <Heading>Available Products</Heading>
-        <Paragraph>
-        Here below all the products available on this catalogue.
-      </Paragraph>
-      <div>
-        Category
-        <button>Chocomousse</button>
-        <button>Chocoviar</button>
-      </div>
-      <div>
-        Flavour
-        <button>Pistacchio</button>
-        <button>Arancia</button>
-      </div>
+      <FilterBar>
+        <Filter>
+            Category
+            <br/>
+            <button>Chocomousse</button>
+            <button>Chocoviar</button>
+        </Filter>
+        <Filter>
+            Flavour
+            <br/>
+            <button>Pistacchio</button>
+            <button>Arancia</button>
+        </Filter>
+      </FilterBar>
       <ProductsContainer>
         {products.map((product : Product, key: number) => <Product key={key} {...product}/>)}
       </ProductsContainer>
