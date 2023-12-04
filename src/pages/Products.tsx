@@ -1,8 +1,9 @@
 import { Layout } from "../components/Layout/Layout"
 import styled from "styled-components";
-import products from "../data/products.json";
 import { Product } from "../domain/Product";
 import { Product } from "../components/Product/Product";
+import { useEffect, useState } from "react";
+import { getProducts } from "../service/products";
 
 const Paragraph = styled.p`
     padding: 1em 2em;
@@ -60,6 +61,15 @@ const FilterBar = styled.div`
 `
 
 export const Products = () => {
+
+    const [products, setProducts] = useState([])
+    
+    useEffect(() => {
+        getProducts().then(products => setProducts(products))
+    }, [])
+
+    
+
     return <Layout>
         <Link href="/">⬅ Back to Home Page</Link>
         <Heading>Available Products</Heading>

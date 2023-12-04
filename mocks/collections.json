@@ -1,0 +1,16 @@
+[
+  {
+    "id": "base",
+    "routes": ["add-headers:enabled", "get-products:all"]
+  },
+  {
+    "id": "no-headers",
+    "from": "base",
+    "routes": ["add-headers:disabled"]
+  },
+  {
+    "id": "all-products",
+    "from": "base",
+    "routes": ["get-products:all"]
+  }
+]
